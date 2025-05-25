@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yaseen Abdelmoniem - Backend Developer</title>
     <style>
-        /* Base styles */
         * {
             margin: 0;
             padding: 0;
@@ -14,11 +13,10 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0a0a0a; /* Fallback for animated-bg */
+            background: #0a0a0a;
             color: #ffffff;
             overflow-x: hidden;
             line-height: 1.6;
-            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
         }
 
         /* Animated Background */
@@ -29,10 +27,9 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: linear-gradient(45deg, #0a0a0a, #1a1a2e, #16213e, #0f0f23); /* Initial dark gradient */
+            background: linear-gradient(45deg, #0a0a0a, #1a1a2e, #16213e, #0f0f23);
             background-size: 400% 400%;
             animation: gradientShift 8s ease infinite;
-            transition: background 8s ease-in-out; /* Increased transition for very smooth changes */
         }
 
         @keyframes gradientShift {
@@ -41,16 +38,11 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Scroll Reveal Effect */
+        /* Make sure all content is visible by default */
         .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .reveal.reveal-visible {
-            opacity: 1;
-            transform: translateY(0);
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition: all 0.3s ease;
         }
 
         /* Header */
@@ -62,7 +54,6 @@
             position: relative;
             background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(156, 39, 176, 0.1));
             padding: 2rem;
-            overflow: hidden; /* Ensure no overflow from profile-img glow */
         }
 
         .hero-content {
@@ -200,36 +191,6 @@
             background: rgba(0, 212, 255, 0.1);
             color: #00d4ff;
             transform: translateY(-2px);
-        }
-
-        /* Hamburger Menu for Mobile */
-        .hamburger {
-            display: none; /* Hidden by default on desktop */
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-            z-index: 1001; /* Ensure it's above other elements */
-        }
-
-        .hamburger .bar {
-            width: 25px;
-            height: 3px;
-            background-color: #ffffff;
-            transition: all 0.3s ease;
-            border-radius: 2px;
-        }
-
-        /* Animation for hamburger icon */
-        .hamburger.active .bar:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active .bar:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
-        }
-
-        .hamburger.active .bar:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
         }
 
         /* Container */
@@ -445,7 +406,6 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-bottom: 1.5rem; /* Added margin for button spacing */
         }
 
         .tech-tag {
@@ -509,9 +469,7 @@
             margin-top: 3rem;
         }
 
-        /* Styling for the contact card when it's a link */
-        .contact-card-link {
-            display: block; /* Make the anchor tag behave like a block */
+        .contact-card {
             background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(156, 39, 176, 0.1));
             padding: 2.5rem 1.5rem;
             border-radius: 20px;
@@ -520,11 +478,9 @@
             position: relative;
             overflow: hidden;
             border: 1px solid rgba(0, 212, 255, 0.2);
-            text-decoration: none; /* Remove underline from the link */
-            color: inherit; /* Inherit text color from body */
         }
 
-        .contact-card-link:hover {
+        .contact-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
         }
@@ -539,13 +495,22 @@
             font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: #ffffff; /* Ensure title color is white */
         }
 
         .contact-info {
             color: #b0b0b0;
             font-size: 1rem;
-            /* Removed contact-link specific styles as the whole card is the link */
+        }
+
+        .contact-link {
+            color: #9c27b0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .contact-link:hover {
+            color: #00d4ff;
         }
 
         /* Footer */
@@ -603,37 +568,14 @@
                 text-align: center;
             }
 
-            .nav-container {
-                flex-direction: row; /* Keep logo and hamburger on one row */
-                justify-content: space-between;
-                align-items: center;
-            }
-
             .nav-links {
                 flex-direction: column;
                 gap: 1rem;
-                position: absolute;
-                top: 100%; /* Position below the nav bar */
-                left: 0;
-                width: 100%;
-                background: rgba(10, 10, 10, 0.98); /* Slightly darker background for open menu */
-                padding: 1rem 2rem;
-                border-top: 1px solid rgba(0, 212, 255, 0.1);
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-                transform: translateY(-100%); /* Hidden by default */
-                opacity: 0;
-                pointer-events: none; /* Disable interaction when hidden */
-                transition: all 0.3s ease-out;
             }
 
-            .nav-links.active {
-                transform: translateY(0); /* Show when active */
-                opacity: 1;
-                pointer-events: all; /* Enable interaction */
-            }
-
-            .hamburger {
-                display: flex; /* Show hamburger on mobile */
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
             }
 
             .section-title {
@@ -662,19 +604,21 @@
             background: linear-gradient(45deg, #00d4ff, #9c27b0);
             border-radius: 4px;
         }
+
+        /* Ensure smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
 <body>
+    <!-- Animated Background -->
     <div class="animated-bg"></div>
 
+    <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
             <div class="logo">YA</div>
-            <div class="hamburger">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -685,6 +629,7 @@
         </div>
     </nav>
 
+    <!-- Header -->
     <header id="home">
         <div class="hero-content reveal">
             <div class="profile-container">
@@ -693,11 +638,12 @@
                 </div>
             </div>
             <h1 class="hero-title">Yaseen Abdelmoniem</h1>
-            <p class="hero-subtitle">Backend Developer</p>
+            <p class="hero-subtitle">Backend Developer & System Architect</p>
             <a href="#contact" class="cta-button">Let's Connect</a>
         </div>
     </header>
 
+    <!-- About Section -->
     <section id="about">
         <div class="container">
             <h2 class="section-title reveal">About Me</h2>
@@ -724,38 +670,40 @@
                 </div>
             </div>
 
+            <!-- Languages Section -->
             <div class="skills-container reveal">
                 <h3 style="font-size: 2rem; margin-bottom: 2rem; color: #00d4ff; text-align: center;">Languages I Speak</h3>
                 <div class="languages-grid">
-                    <div class="language-card reveal">
+                    <div class="language-card">
                         <div class="language-flag">🇸🇦</div>
                         <div class="language-name">Arabic</div>
                         <div class="language-level">Native (10/10)</div>
                     </div>
-                    <div class="language-card reveal">
+                    <div class="language-card">
                         <div class="language-flag">🇺🇸</div>
                         <div class="language-name">English</div>
-                        <div class="language-level">Advanced (8.0/10)</div>
+                        <div class="language-level">Advanced (8.5/10)</div>
                     </div>
-                    <div class="language-card reveal">
+                    <div class="language-card">
                         <div class="language-flag">🇹🇷</div>
                         <div class="language-name">Turkish</div>
-                        <div class="language-level">Intermediate (5.5/10)</div>
+                        <div class="language-level">Intermediate (6/10)</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Portfolio Section -->
     <section id="portfolio">
         <div class="container">
-            <h2 class="section-title reveal">Featured Projects</h2>
+            <h2 class="section-title reveal">Featured Project</h2>
             <div class="portfolio-grid">
                 <div class="portfolio-item reveal">
                     <div class="portfolio-img">⚡</div>
                     <div class="portfolio-content">
                         <h3 class="portfolio-title">Universal Web App & Bot Performance Tester</h3>
-                        <p class="portfolio-desc">A sophisticated monitoring and performance analysis tool that executes comprehensive HTTP requests to target websites, capturing critical performance metrics including response times and HTTP status codes. The system intelligently stores collected data in a local SQLite database, generates insightful visual analytics, and exports detailed reports in both CSV and PDF formats.</p>
+                        <p class="portfolio-desc">A sophisticated website monitoring and performance analysis tool that executes comprehensive HTTP requests to target websites, capturing critical performance metrics including response times and HTTP status codes. The system intelligently stores collected data in a local SQLite database, generates insightful visual analytics, and exports detailed reports in both CSV and PDF formats.</p>
                         <p class="portfolio-desc" style="margin-top: 1rem; font-style: italic;">This tool serves as an essential asset for Quality Assurance teams conducting uptime and responsiveness testing, System administrators requiring lightweight monitoring reports, and Developers performing pre-deployment performance validation.</p>
                         <div class="portfolio-tech">
                             <span class="tech-tag">Python</span>
@@ -764,20 +712,6 @@
                             <span class="tech-tag">Performance Testing</span>
                             <span class="tech-tag">Report Generation</span>
                         </div>
-                        </div>
-                </div>
-
-                <div class="portfolio-item reveal">
-                    <div class="portfolio-img">🚗</div> <div class="portfolio-content">
-                        <h3 class="portfolio-title">Yaseen's AutoMax: Integrated Car Sales & Finance Platform</h3>
-                        <p class="portfolio-desc">Yaseen's AutoMax is a web application for car sales and finance, enabling users to explore vehicles and calculate loan payments. It offers interactive vehicle selection and detailed, real-time loan breakdowns, simplifying the car buying experience.</p>
-                        <div class="portfolio-tech">
-                            <span class="tech-tag">ASP</span>
-                            <span class="tech-tag">Web Application</span>
-                            <span class="tech-tag">Finance</span>
-                            <span class="tech-tag">Car Sales</span>
-                        </div>
-                        <a href="https://yaseen369.github.io/Yaseen-Automax/" target="_blank" class="cta-button" style="font-size: 0.9rem; padding: 10px 20px;">View Live Demo</a>
                     </div>
                 </div>
             </div>
@@ -804,6 +738,11 @@
                     <div class="skill-level">System Programming</div>
                 </div>
                 <div class="skill-card reveal">
+                    <div class="skill-icon">🗄️</div>
+                    <div class="skill-name">Database Design</div>
+                    <div class="skill-level">SQL & NoSQL</div>
+                </div>
+                <div class="skill-card reveal">
                     <div class="skill-icon">🌐</div>
                     <div class="skill-name">API Development</div>
                     <div class="skill-level">RESTful Services</div>
@@ -811,12 +750,13 @@
                 <div class="skill-card reveal">
                     <div class="skill-icon">🔧</div>
                     <div class="skill-name">System Architecture</div>
-                    <div the="skill-level">Scalable Solutions</div>
+                    <div class="skill-level">Scalable Solutions</div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact">
         <div class="container">
             <h2 class="section-title reveal">Let's Build Something Amazing</h2>
@@ -824,33 +764,39 @@
                 Ready to collaborate on your next big project? Let's connect and make it happen!
             </p>
             <div class="contact-grid">
-                <a href="mailto:yaseenhakeem199@gmail.com" class="contact-card-link reveal">
+                <div class="contact-card reveal">
                     <div class="contact-icon">📧</div>
                     <div class="contact-title">Email</div>
-                    <div class="contact-info">yaseenhakeem199@gmail.com</div>
-                </a>
-
-                <a href="https://www.linkedin.com/in/yaseen-abdelrhman-905aaa253/" class="contact-card-link reveal" target="_blank">
+                    <div class="contact-info">
+                        <a href="mailto:yaseenhakeem199@gmail.com" class="contact-link">yaseenhakeem199@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-card reveal">
                     <div class="contact-icon">💼</div>
                     <div class="contact-title">LinkedIn</div>
-                    <div class="contact-info">Connect with me</div>
-                </a>
-
-                <a href="https://wa.me/905488665458" class="contact-card-link reveal" target="_blank">
+                    <div class="contact-info">
+                        <a href="https://www.linkedin.com/in/yaseen-abdelrhman-905aaa253/" class="contact-link" target="_blank">Connect with me</a>
+                    </div>
+                </div>
+                <div class="contact-card reveal">
                     <div class="contact-icon">📱</div>
                     <div class="contact-title">Phone</div>
-                    <div class="contact-info">+90 548 866 5458</div>
-                </a>
-
-                <a href="#" class="contact-card-link reveal" target="_blank">
+                    <div class="contact-info">
+                        <a href="tel:+905488665458" class="contact-link">+90 548 866 5458</a>
+                    </div>
+                </div>
+                <div class="contact-card reveal">
                     <div class="contact-icon">🐙</div>
                     <div class="contact-title">GitHub</div>
-                    <div class="contact-info">View my repositories</div>
-                </a>
+                    <div class="contact-info">
+                        <a href="#" class="contact-link" target="_blank">View my repositories</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -860,84 +806,11 @@
                 <div class="social-links">
                     <a href="mailto:yaseenhakeem199@gmail.com" class="social-link">📧</a>
                     <a href="https://www.linkedin.com/in/yaseen-abdelrhman-905aaa253/" class="social-link" target="_blank">💼</a>
-                    <a href="https://wa.me/905488665458" class="social-link" target="_blank">📱</a>
+                    <a href="tel:+905488665458" class="social-link">📱</a>
                     <a href="#" class="social-link" target="_blank">🐙</a>
                 </div>
             </div>
         </div>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // 1. Scroll Reveal Animation
-            const revealElements = document.querySelectorAll('.reveal');
-
-            const observerOptions = {
-                root: null, // viewport
-                rootMargin: '0px',
-                threshold: 0.1 // Trigger when 10% of the element is visible
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('reveal-visible');
-                        observer.unobserve(entry.target); // Stop observing once revealed
-                    }
-                });
-            }, observerOptions);
-
-            revealElements.forEach(el => {
-                observer.observe(el);
-            });
-
-            // 2. Random Dark Background Colors
-            const animatedBg = document.querySelector('.animated-bg');
-            const darkGradients = [
-                'linear-gradient(45deg, #0a0a0a, #1a1a2e, #16213e, #0f0f23)', /* Original */
-                'linear-gradient(45deg, #1e002a, #2a003f, #3f005a, #2c0040)', /* Deep Purples */
-                'linear-gradient(45deg, #0d1b2a, #1b263b, #2b3a50, #415a77)', /* Muted Blues */
-                'linear-gradient(45deg, #0f0f0f, #1f1f1f, #2f2f2f, #3f3f3f)', /* Dark Greys */
-                'linear-gradient(45deg, #001f3f, #003366, #004080, #0050a0)', /* Deeper Blues */
-                'linear-gradient(45deg, #200020, #300030, #400040, #250025)', /* Darker Purples */
-                'linear-gradient(45deg, #05101a, #102030, #152535, #08121c)'  /* Very Dark Blues/Greens */
-            ];
-
-            let currentGradientIndex = 0;
-
-            function changeBackgroundGradient() {
-                currentGradientIndex = (currentGradientIndex + 1) % darkGradients.length;
-                animatedBg.style.background = darkGradients[currentGradientIndex];
-                animatedBg.style.backgroundSize = '400% 400%'; // Maintain animation size
-            }
-
-            setInterval(changeBackgroundGradient, 8000); // Change every 8 seconds for smoother transition
-
-            // 3. Mobile Navigation Toggle
-            const hamburger = document.querySelector('.hamburger');
-            const navLinks = document.querySelector('.nav-links');
-
-            hamburger.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                hamburger.classList.toggle('active');
-            });
-
-            // Close nav when a link is clicked
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    hamburger.classList.remove('active');
-                });
-            });
-
-            // Optional: Close nav if clicked outside (for larger screens if nav is still open)
-            document.addEventListener('click', (event) => {
-                if (!navLinks.contains(event.target) && !hamburger.contains(event.target)) {
-                    navLinks.classList.remove('active');
-                    hamburger.classList.remove('active');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
