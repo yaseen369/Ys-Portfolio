@@ -3,8 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yaseen Abdelmoniem - Backend Developer</title>
+    <title>YASEEN ABDELRHMAN - Backend Developer</title>
     <style>
+        /* CSS Variables for Theming */
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #ffffff;
+            --accent-color-primary: #00d4ff;
+            --accent-color-secondary: #9c27b0;
+            --card-bg: rgba(0, 212, 255, 0.05);
+            --card-border: rgba(0, 212, 255, 0.1);
+            --nav-bg: rgba(10, 10, 10, 0.95);
+            --form-input-bg: rgba(10, 10, 10, 0.7);
+            --placeholder-color: #b0b0b0;
+            --footer-bg: linear-gradient(45deg, #0a0a0a, #1a1a2e);
+            --gradient-1: #00d4ff;
+            --gradient-2: #9c27b0;
+            --gradient-3: #ff6b35;
+        }
+
+        .light-mode {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --accent-color-primary: #007bff;
+            --accent-color-secondary: #6f42c1;
+            --card-bg: rgba(0, 123, 255, 0.05);
+            --card-border: rgba(0, 123, 255, 0.1);
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --form-input-bg: #f8f9fa;
+            --placeholder-color: #6c757d;
+            --footer-bg: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            --gradient-1: #007bff;
+            --gradient-2: #6f42c1;
+            --gradient-3: #fd7e14;
+        }
+
+        /* Base styles */
         * {
             margin: 0;
             padding: 0;
@@ -13,13 +47,15 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0a0a0a;
-            color: #ffffff;
+            background: var(--bg-color);
+            color: var(--text-color);
             overflow-x: hidden;
             line-height: 1.6;
             scroll-behavior: smooth;
+            transition: background 0.5s ease, color 0.5s ease; /* Smooth transition for theme change */
         }
 
+        /* Animated Background */
         .animated-bg {
             position: fixed;
             top: 0;
@@ -27,10 +63,10 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: linear-gradient(45deg, #0a0a0a, #1a1a2e, #16213e, #0f0f23);
+            background: linear-gradient(45deg, var(--bg-color), var(--bg-color), var(--accent-color-primary), var(--accent-color-secondary));
             background-size: 400% 400%;
-            animation: gradientShift 60s ease infinite;
-            transition: background 30s ease-in-out;
+            animation: gradientShift 8s ease infinite;
+            transition: background 8s ease-in-out;
         }
 
         @keyframes gradientShift {
@@ -39,10 +75,11 @@
             100% { background-position: 0% 50%; }
         }
 
+        /* Scroll Reveal Effect */
         .reveal {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
         .reveal.reveal-visible {
@@ -50,6 +87,7 @@
             transform: translateY(0);
         }
 
+        /* Header */
         header {
             min-height: 100vh;
             display: flex;
@@ -75,7 +113,7 @@
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            background: linear-gradient(45deg, #00d4ff, #9c27b0, #ff6b35);
+            background: linear-gradient(45deg, var(--gradient-1), var(--gradient-2), var(--gradient-3));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -104,7 +142,7 @@
             font-size: 4rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, #00d4ff, #9c27b0, #ff6b35);
+            background: linear-gradient(45deg, var(--gradient-1), var(--gradient-2), var(--gradient-3));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -118,14 +156,14 @@
 
         .hero-subtitle {
             font-size: 1.5rem;
-            color: #b0b0b0;
+            color: var(--placeholder-color);
             margin-bottom: 2rem;
         }
 
         .cta-button {
             display: inline-block;
             padding: 15px 40px;
-            background: linear-gradient(45deg, #00d4ff, #9c27b0);
+            background: linear-gradient(45deg, var(--gradient-1), var(--gradient-2));
             color: white !important;
             text-decoration: none;
             border-radius: 50px;
@@ -145,12 +183,13 @@
             color: white !important;
         }
 
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
             padding: 1rem 0;
-            background: rgba(10, 10, 10, 0.95);
+            background: var(--nav-bg);
             backdrop-filter: blur(10px);
             z-index: 1000;
             transition: all 0.3s ease;
@@ -169,7 +208,7 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            background: linear-gradient(45deg, #00d4ff, #9c27b0);
+            background: linear-gradient(45deg, var(--gradient-1), var(--gradient-2));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -182,7 +221,7 @@
         }
 
         .nav-links a {
-            color: #ffffff;
+            color: var(--text-color);
             text-decoration: none;
             font-weight: 500;
             padding: 0.5rem 1rem;
@@ -193,10 +232,32 @@
 
         .nav-links a:hover {
             background: rgba(0, 212, 255, 0.1);
-            color: #00d4ff;
+            color: var(--accent-color-primary);
             transform: translateY(-2px);
         }
 
+        /* Dark/Light Mode Toggle Button */
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+            margin-left: 1rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .theme-toggle:hover {
+            color: var(--accent-color-primary);
+            transform: rotate(20deg);
+        }
+
+        /* Hamburger Menu for Mobile */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -208,29 +269,23 @@
         .hamburger .bar {
             width: 25px;
             height: 3px;
-            background-color: #ffffff;
+            background-color: var(--text-color);
             transition: all 0.3s ease;
             border-radius: 2px;
         }
 
-        .hamburger.active .bar:nth-child(2) {
-            opacity: 0;
-        }
+        .hamburger.active .bar:nth-child(2) { opacity: 0; }
+        .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-        .hamburger.active .bar:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
-        }
-
-        .hamburger.active .bar:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
-        }
-
+        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
+        /* Sections */
         section {
             padding: 100px 0;
             position: relative;
@@ -240,7 +295,7 @@
             font-size: 3rem;
             text-align: center;
             margin-bottom: 4rem;
-            background: linear-gradient(45deg, #00d4ff, #9c27b0);
+            background: linear-gradient(45deg, var(--gradient-1), var(--gradient-2));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -255,10 +310,11 @@
             transform: translateX(-50%);
             width: 100px;
             height: 3px;
-            background: linear-gradient(45deg, #00d4ff, #9c27b0);
+            background: linear-gradient(45deg, var(--gradient-1), var(--gradient-2));
             border-radius: 2px;
         }
 
+        /* About Section */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 2fr;
@@ -273,7 +329,7 @@
         .about-img {
             width: 300px;
             height: 400px;
-            background: linear-gradient(45deg, #00d4ff, #9c27b0);
+            background: linear-gradient(45deg, var(--gradient-1), var(--gradient-2));
             border-radius: 20px;
             display: flex;
             align-items: center;
@@ -307,7 +363,7 @@
         .floating-icon {
             position: absolute;
             font-size: 2rem;
-            color: #00d4ff;
+            color: var(--accent-color-primary);
             animation: floatIcon 4s ease-in-out infinite;
         }
 
@@ -324,14 +380,14 @@
         .about-content h3 {
             font-size: 2rem;
             margin-bottom: 1rem;
-            color: #00d4ff;
+            color: var(--accent-color-primary);
         }
 
         .about-text {
             font-size: 1.1rem;
             line-height: 1.8;
             margin-bottom: 2rem;
-            color: #b0b0b0;
+            color: var(--placeholder-color);
         }
 
         .skills-container {
@@ -346,10 +402,10 @@
         }
 
         .skill-card {
-            background: rgba(0, 212, 255, 0.05);
+            background: var(--card-bg);
             padding: 2rem;
             border-radius: 15px;
-            border: 1px solid rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--card-border);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -361,6 +417,24 @@
             box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
         }
 
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color-primary);
+        }
+
+        .skill-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-level {
+            color: var(--accent-color-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Portfolio section */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -370,10 +444,10 @@
         }
 
         .portfolio-item {
-            background: rgba(0, 212, 255, 0.05);
+            background: var(--card-bg);
             border-radius: 20px;
             overflow: hidden;
-            border: 1px solid rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--card-border);
             transition: all 0.3s ease;
             position: relative;
             max-width: 700px;
@@ -393,7 +467,7 @@
             align-items: center;
             justify-content: center;
             font-size: 4rem;
-            color: #00d4ff;
+            color: var(--accent-color-primary);
         }
 
         .portfolio-content {
@@ -403,12 +477,12 @@
         .portfolio-title {
             font-size: 1.4rem;
             margin-bottom: 1rem;
-            color: #00d4ff;
+            color: var(--accent-color-primary);
             font-weight: 600;
         }
 
         .portfolio-desc {
-            color: #b0b0b0;
+            color: var(--placeholder-color);
             margin-bottom: 1.5rem;
             line-height: 1.6;
         }
@@ -422,7 +496,7 @@
 
         .tech-tag {
             background: rgba(156, 39, 176, 0.2);
-            color: #9c27b0;
+            color: var(--accent-color-secondary);
             padding: 0.4rem 1rem;
             border-radius: 20px;
             font-size: 0.85rem;
@@ -432,8 +506,7 @@
 
         .tech-tag:hover {
             background: rgba(156, 39, 176, 0.3);
-            transform: translateY(-2px) scale(1.05);
-            opacity: 0.9;
+            transform: translateY(-2px);
         }
 
         .languages-grid {
@@ -470,15 +543,17 @@
         }
 
         .language-level {
-            color: #00d4ff;
+            color: var(--accent-color-primary);
             font-weight: 500;
         }
 
+        /* Contact Section */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
+            margin-bottom: 4rem;
         }
 
         .contact-card-link {
@@ -503,26 +578,27 @@
         .contact-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
-            color: #00d4ff;
+            color: var(--accent-color-primary);
         }
 
         .contact-title {
             font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: #ffffff;
+            color: var(--text-color);
         }
 
         .contact-info {
-            color: #b0b0b0;
+            color: var(--placeholder-color);
             font-size: 1rem;
         }
 
+        /* Footer */
         footer {
-            background: linear-gradient(45deg, #0a0a0a, #1a1a2e);
+            background: var(--footer-bg);
             padding: 3rem 0;
             text-align: center;
-            border-top: 1px solid rgba(0, 212, 255, 0.1);
+            border-top: 1px solid var(--card-border);
         }
 
         .footer-content {
@@ -534,7 +610,7 @@
         }
 
         .footer-text {
-            color: #b0b0b0;
+            color: var(--placeholder-color);
         }
 
         .social-links {
@@ -545,7 +621,7 @@
         .social-link {
             width: 50px;
             height: 50px;
-            background: linear-gradient(45deg, #00d4ff, #9c27b0);
+            background: linear-gradient(45deg, var(--gradient-1), var(--gradient-2));
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -561,6 +637,84 @@
             box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
         }
 
+        /* Loading Animation (Skeleton Loader) */
+        .portfolio-skeleton-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            justify-items: center;
+            margin-top: 2rem;
+        }
+
+        .skeleton-item {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            max-width: 700px;
+            width: 100%;
+            padding: 2rem;
+            position: relative;
+            height: 350px; /* Approximate height of a portfolio item */
+            animation: pulse-skeleton 1.5s infinite ease-in-out;
+        }
+
+        .skeleton-item .skeleton-img-placeholder {
+            height: 180px; /* Matches portfolio-img height roughly */
+            background: linear-gradient(90deg, var(--card-bg) 25%, rgba(0, 212, 255, 0.15) 50%, var(--card-bg) 75%);
+            background-size: 200% 100%;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            animation: loading-gradient 1.5s infinite linear;
+        }
+
+        .skeleton-item .skeleton-text {
+            height: 1.2em;
+            background: linear-gradient(90deg, var(--card-bg) 25%, rgba(0, 212, 255, 0.1) 50%, var(--card-bg) 75%);
+            background-size: 200% 100%;
+            border-radius: 5px;
+            margin-bottom: 0.8rem;
+            animation: loading-gradient 1.5s infinite linear;
+        }
+
+        .skeleton-item .skeleton-text.short {
+            width: 60%;
+        }
+
+        .skeleton-item .skeleton-text.long {
+            width: 90%;
+        }
+
+        .skeleton-item .skeleton-tag {
+            height: 1.5em;
+            width: 80px;
+            background: linear-gradient(90deg, var(--card-bg) 25%, rgba(0, 212, 255, 0.08) 50%, var(--card-bg) 75%);
+            background-size: 200% 100%;
+            border-radius: 20px;
+            display: inline-block;
+            margin-right: 0.5rem;
+            margin-top: 1rem;
+            animation: loading-gradient 1.5s infinite linear;
+        }
+        
+        @keyframes pulse-skeleton {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+
+        @keyframes loading-gradient {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Hide content initially or when loading */
+        .portfolio-content-wrapper {
+            display: none; /* Hidden by default, revealed by JS */
+        }
+
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2.5rem;
@@ -584,9 +738,9 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background: rgba(10, 10, 10, 0.98);
+                background: var(--nav-bg);
                 padding: 1rem 2rem;
-                border-top: 1px solid rgba(0, 212, 255, 0.1);
+                border-top: 1px solid var(--card-border);
                 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
                 transform: translateY(-100%);
                 opacity: 0;
@@ -617,6 +771,7 @@
             }
         }
 
+        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -626,7 +781,7 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(45deg, #00d4ff, #9c27b0);
+            background: linear-gradient(45deg, var(--gradient-1), var(--gradient-2));
             border-radius: 4px;
         }
     </style>
@@ -648,6 +803,7 @@
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><button id="theme-toggle" class="theme-toggle">☀️</button></li>
             </ul>
         </div>
     </nav>
@@ -656,10 +812,10 @@
         <div class="hero-content reveal">
             <div class="profile-container">
                 <div class="profile-img">
-                    <img src="image.jpg" alt="Yaseen Abdelmoniem" onerror="this.style.display='none'; this.parentElement.innerHTML='👨‍💻';">
+                    <img src="https://placehold.co/200x200/1a1a2e/ffffff?text=YA" alt="YASEEN ABDELRHMAN" onerror="this.style.display='none'; this.parentElement.innerHTML='👨‍💻';">
                 </div>
             </div>
-            <h1 class="hero-title">Yaseen Abdelmoniem</h1>
+            <h1 class="hero-title">YASEEN ABDELRHMAN</h1>
             <p class="hero-subtitle">Backend Developer</p>
             <a href="#contact" class="cta-button">Let's Connect</a>
         </div>
@@ -671,7 +827,7 @@
             <div class="about-grid">
                 <div class="about-image reveal">
                     <div class="about-img">
-                        <img src="image2.jpg" alt="Yaseen at work" onerror="this.style.display='none'; this.parentElement.innerHTML='�';">
+                        <img src="https://placehold.co/300x400/1a1a2e/ffffff?text=🚀" alt="YASEEN ABDELRHMAN at work" onerror="this.style.display='none'; this.parentElement.innerHTML='🚀';">
                     </div>
                     <div class="floating-icons">
                         <div class="floating-icon">🐍</div>
@@ -692,7 +848,7 @@
             </div>
 
             <div class="skills-container reveal">
-                <h3 style="font-size: 2rem; margin-bottom: 2rem; color: #00d4ff; text-align: center;">Languages I Speak</h3>
+                <h3 style="font-size: 2rem; margin-bottom: 2rem; color: var(--accent-color-primary); text-align: center;">Languages I Speak</h3>
                 <div class="languages-grid">
                     <div class="language-card reveal">
                         <div class="language-flag">🇸🇦</div>
@@ -702,12 +858,12 @@
                     <div class="language-card reveal">
                         <div class="language-flag">🇺🇸</div>
                         <div class="language-name">English</div>
-                        <div class="language-level">Advanced (8.0/10)</div>
+                        <div class="language-level">Advanced (8.5/10)</div>
                     </div>
                     <div class="language-card reveal">
                         <div class="language-flag">🇹🇷</div>
                         <div class="language-name">Turkish</div>
-                        <div class="language-level">Intermediate (5.5/10)</div>
+                        <div class="language-level">Intermediate (6/10)</div>
                     </div>
                 </div>
             </div>
@@ -717,11 +873,33 @@
     <section id="portfolio">
         <div class="container">
             <h2 class="section-title reveal">Featured Projects</h2>
-            <div class="portfolio-grid">
+
+            <div id="portfolio-skeleton" class="portfolio-skeleton-container">
+                <div class="skeleton-item">
+                    <div class="skeleton-img-placeholder"></div>
+                    <div class="skeleton-text long"></div>
+                    <div class="skeleton-text"></div>
+                    <div class="skeleton-text short"></div>
+                    <div class="skeleton-tag"></div>
+                    <div class="skeleton-tag"></div>
+                    <div class="skeleton-tag"></div>
+                </div>
+                <div class="skeleton-item">
+                    <div class="skeleton-img-placeholder"></div>
+                    <div class="skeleton-text long"></div>
+                    <div class="skeleton-text"></div>
+                    <div class="skeleton-text short"></div>
+                    <div class="skeleton-tag"></div>
+                    <div class="skeleton-tag"></div>
+                    <div class="skeleton-tag"></div>
+                </div>
+            </div>
+
+            <div id="portfolio-content" class="portfolio-grid portfolio-content-wrapper">
                 <div class="portfolio-item reveal">
                     <div class="portfolio-img">⚡</div>
                     <div class="portfolio-content">
-                        <h3 class="portfolio-title">Universal Web App & Bot Performance Tester</h3>
+                      <h3 class="portfolio-title">Universal Web App & Bot Performance Tester</h3>
                         <p class="portfolio-desc">A sophisticated monitoring and performance analysis tool that executes comprehensive HTTP requests to target websites, capturing critical performance metrics including response times and HTTP status codes. The system intelligently stores collected data in a local SQLite database, generates insightful visual analytics, and exports detailed reports in both CSV and PDF formats.</p>
                         <p class="portfolio-desc" style="margin-top: 1rem; font-style: italic;">This tool serves as an essential asset for Quality Assurance teams conducting uptime and responsiveness testing, System administrators requiring lightweight monitoring reports, and Developers performing pre-deployment performance validation.</p>
                         <div class="portfolio-tech">
@@ -787,7 +965,7 @@
     <section id="contact">
         <div class="container">
             <h2 class="section-title reveal">Let's Build Something Amazing</h2>
-            <p style="text-align: center; font-size: 1.2rem; color: #b0b0b0; margin-bottom: 3rem;" class="reveal">
+            <p style="text-align: center; font-size: 1.2rem; color: var(--placeholder-color); margin-bottom: 3rem;" class="reveal">
                 Ready to collaborate on your next big project? Let's connect and make it happen!
             </p>
             <div class="contact-grid">
@@ -809,7 +987,7 @@
                     <div class="contact-info">+90 548 866 5458</div>
                 </a>
 
-                <a href="https://github.com/yaseen369" class="contact-card-link reveal" target="_blank">
+                <a href="#" class="contact-card-link reveal" target="_blank">
                     <div class="contact-icon">🐙</div>
                     <div class="contact-title">GitHub</div>
                     <div class="contact-info">View my repositories</div>
@@ -822,13 +1000,13 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-text">
-                    © 2025 Yaseen Abdelmoniem. Crafted with passion for backend excellence.
+                    © 2025 YASEEN ABDELRHMAN. Crafted with passion for backend excellence.
                 </div>
                 <div class="social-links">
                     <a href="mailto:yaseenhakeem199@gmail.com" class="social-link">📧</a>
                     <a href="https://www.linkedin.com/in/yaseen-abdelrhman-905aaa253/" class="social-link" target="_blank">💼</a>
                     <a href="https://wa.me/905488665458" class="social-link" target="_blank">📱</a>
-                    <a href="https://github.com/yaseen369" class="social-link" target="_blank">🐙</a>
+                    <a href="#" class="social-link" target="_blank">🐙</a>
                 </div>
             </div>
         </div>
@@ -836,6 +1014,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // 1. Scroll Reveal Animation
             const revealElements = document.querySelectorAll('.reveal');
 
             const observerOptions = {
@@ -857,24 +1036,41 @@
                 observer.observe(el);
             });
 
+            // 2. Random Dark Background Colors (now respects theme)
             const animatedBg = document.querySelector('.animated-bg');
             const darkGradients = [
                 'linear-gradient(45deg, #0a0a0a, #1a1a2e, #16213e, #0f0f23)',
-                'linear-gradient(45deg, #0f0f0f, #1f1f1f, #2f2f2f, #3f3f3f)',
+                'linear-gradient(45deg, #1e002a, #2a003f, #3f005a, #2c0040)',
                 'linear-gradient(45deg, #0d1b2a, #1b263b, #2b3a50, #415a77)',
-                'linear-gradient(45deg, #1e002a, #2a003f, #3f005a, #2c0040)'
+                'linear-gradient(45deg, #0f0f0f, #1f1f1f, #2f2f2f, #3f3f3f)',
+                'linear-gradient(45deg, #001f3f, #003366, #004080, #0050a0)',
+                'linear-gradient(45deg, #200020, #300030, #400040, #250025)',
+                'linear-gradient(45deg, #05101a, #102030, #152535, #08121c)'
+            ];
+            const lightGradients = [
+                'linear-gradient(45deg, #ffffff, #f0f2f5, #e0e4eb, #d0d5e0)',
+                'linear-gradient(45deg, #f0f8ff, #e6f2ff, #d9ebff, #cce4ff)',
+                'linear-gradient(45deg, #fdfdfd, #f5f5f5, #ebebeb, #e0e0e0)',
+                'linear-gradient(45deg, #fff0f5, #ffe6f0, #ffdbde, #ffd0d0)'
             ];
 
             let currentGradientIndex = 0;
 
-            function changeBackgroundGradient() {
-                currentGradientIndex = (currentGradientIndex + 1) % darkGradients.length;
-                animatedBg.style.background = darkGradients[currentGradientIndex];
+            function updateBackgroundGradient() {
+                const isLightMode = document.body.classList.contains('light-mode');
+                const gradients = isLightMode ? lightGradients : darkGradients;
+                currentGradientIndex = (currentGradientIndex + 1) % gradients.length;
+                animatedBg.style.background = gradients[currentGradientIndex];
                 animatedBg.style.backgroundSize = '400% 400%';
             }
 
-            setInterval(changeBackgroundGradient, 30000);
+            setInterval(updateBackgroundGradient, 8000);
 
+            // Initial background set based on current theme
+            updateBackgroundGradient();
+
+
+            // 3. Mobile Navigation Toggle
             const hamburger = document.querySelector('.hamburger');
             const navLinks = document.querySelector('.nav-links');
 
@@ -891,13 +1087,49 @@
             });
 
             document.addEventListener('click', (event) => {
-                if (!navLinks.contains(event.target) && !hamburger.contains(event.target)) {
+                if (!navLinks.contains(event.target) && !hamburger.contains(event.target) && !document.getElementById('theme-toggle').contains(event.target)) {
                     navLinks.classList.remove('active');
                     hamburger.classList.remove('active');
                 }
             });
+
+            // 4. Dark/Light Mode Toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                body.classList.add('light-mode');
+                themeToggle.textContent = '🌙'; // Moon icon for light mode
+            } else {
+                body.classList.remove('light-mode');
+                themeToggle.textContent = '☀️'; // Sun icon for dark mode
+            }
+
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('light-mode');
+                if (body.classList.contains('light-mode')) {
+                    localStorage.setItem('theme', 'light');
+                    themeToggle.textContent = '🌙';
+                } else {
+                    localStorage.setItem('theme', 'dark');
+                    themeToggle.textContent = '☀️';
+                }
+                // Update animated background immediately when theme changes
+                updateBackgroundGradient();
+            });
+
+            // 5. Loading Animation (Skeleton Loader for Portfolio)
+            const portfolioSkeleton = document.getElementById('portfolio-skeleton');
+            const portfolioContent = document.getElementById('portfolio-content');
+
+            // Simulate loading for 2 seconds
+            setTimeout(() => {
+                portfolioSkeleton.style.display = 'none'; // Hide skeleton
+                portfolioContent.style.display = 'grid'; // Show actual content
+            }, 2000); // Adjust loading time as needed
         });
     </script>
 </body>
 </html>
-�
